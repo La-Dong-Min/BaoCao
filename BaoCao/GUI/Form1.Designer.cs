@@ -47,7 +47,7 @@
             this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGioiTinh = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
@@ -201,6 +201,7 @@
             this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(731, 355);
             this.dgvNhanVien.TabIndex = 15;
+            this.dgvNhanVien.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Row);
             // 
             // colMa
             // 
@@ -224,6 +225,8 @@
             // 
             this.colGioiTinh.HeaderText = "Giới tính";
             this.colGioiTinh.Name = "colGioiTinh";
+            this.colGioiTinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colGioiTinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colNoiSinh
             // 
@@ -288,7 +291,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMa;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGioiTinh;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colGioiTinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNoiSinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDonVi;
     }

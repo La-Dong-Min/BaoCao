@@ -82,6 +82,7 @@ namespace BaoCao
                 Nv.Name = tbHoTen.Text;
                 Nv.PlaceBirth = tbNoiSinh.Text;
                 Nv.DateBirth = dateTimePickerNgaySinh.Text;
+                Nv.Gender = dateTimePickerNgaySinh.Checked;
                 Nv.Depart = (Department)cmBDonVi.SelectedItem;
                 cusBLL.EditCustomer(Nv);
 
@@ -97,15 +98,36 @@ namespace BaoCao
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            ProjectDTO Nv = new ProjectDTO();
-            Nv.IdEmployee = tbMa.Text;
-            Nv.Name = tbHoTen.Text;
-            Nv.PlaceBirth = tbNoiSinh.Text;
-            Nv.DateBirth = dateTimePickerNgaySinh.Text;
-            Nv.Depart = (Department)cmBDonVi.SelectedItem;
-            int idx = dgvNhanVien.CurrentCell.RowIndex;
-            cusBLL.DeleteCustomer(Nv);
-            dgvNhanVien.Rows.RemoveAt(idx);
+            DialogResult Xoa;
+            Xoa = MessageBox.Show("Bạn có muốn xóa thoát?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Xoa == DialogResult.Yes)
+            {
+                ProjectDTO Nv = new ProjectDTO();
+                Nv.IdEmployee = tbMa.Text;
+                Nv.Name = tbHoTen.Text;
+                Nv.PlaceBirth = tbNoiSinh.Text;
+                Nv.DateBirth = dateTimePickerNgaySinh.Text;
+                Nv.Depart = (Department)cmBDonVi.SelectedItem;
+                int idx = dgvNhanVien.CurrentCell.RowIndex;
+                cusBLL.DeleteCustomer(Nv);
+                dgvNhanVien.Rows.RemoveAt(idx);
+             }
+        }
+
+    
+
+        private void Row(object sender, DataGridViewCellEventArgs e)
+        {
+            int idx = e.RowIndex;
+            if (idx >= 0)
+            {
+                tbMa.Text = dgvNhanVien.Rows[idx].Cells[0].Value.ToString();
+                tbHoTen.Text = dgvNhanVien.Rows[idx].Cells[1].Value.ToString();
+                dateTimePickerNgaySinh.Text = dgvNhanVien.Rows[idx].Cells[2].Value.ToString();
+                checkBoxGioiTinh.Checked = bool.Parse(dgvNhanVien.Rows[idx].Cells[3].Value.ToString());
+                tbNoiSinh.Text = dgvNhanVien.Rows[idx].Cells[4].Value.ToString();
+                cmBDonVi.Text = dgvNhanVien.Rows[idx].Cells[5].Value.ToString();
+            }
         }
     }
 }
