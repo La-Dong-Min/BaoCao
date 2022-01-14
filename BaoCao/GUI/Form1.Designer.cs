@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbMa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmBDonVi = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbHoTen = new System.Windows.Forms.TextBox();
@@ -43,14 +43,14 @@
             this.btThoat = new System.Windows.Forms.Button();
             this.btXoa = new System.Windows.Forms.Button();
             this.btThem = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -78,13 +78,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Đơn vị";
             // 
-            // comboBox1
+            // cmBDonVi
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 29);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(110, 24);
-            this.comboBox1.TabIndex = 3;
+            this.cmBDonVi.FormattingEnabled = true;
+            this.cmBDonVi.Location = new System.Drawing.Point(64, 29);
+            this.cmBDonVi.Name = "cmBDonVi";
+            this.cmBDonVi.Size = new System.Drawing.Size(110, 24);
+            this.cmBDonVi.TabIndex = 3;
             // 
             // label3
             // 
@@ -153,6 +153,7 @@
             this.btSua.TabIndex = 11;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
+            this.btSua.Click += new System.EventHandler(this.btSua_Click);
             // 
             // btThoat
             // 
@@ -172,6 +173,7 @@
             this.btXoa.TabIndex = 13;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
             // btThem
             // 
@@ -181,22 +183,24 @@
             this.btThem.TabIndex = 14;
             this.btThem.Text = "Thêm";
             this.btThem.UseVisualStyleBackColor = true;
+            this.btThem.Click += new System.EventHandler(this.btThem_Click);
             // 
-            // dataGridView1
+            // dgvNhanVien
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMa,
             this.colHoTen,
             this.colNgaySinh,
             this.colGioiTinh,
             this.colNoiSinh,
             this.colDonVi});
-            this.dataGridView1.Location = new System.Drawing.Point(7, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(731, 355);
-            this.dataGridView1.TabIndex = 15;
+            this.dgvNhanVien.Location = new System.Drawing.Point(7, 59);
+            this.dgvNhanVien.Name = "dgvNhanVien";
+            this.dgvNhanVien.RowTemplate.Height = 24;
+            this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNhanVien.Size = new System.Drawing.Size(731, 355);
+            this.dgvNhanVien.TabIndex = 15;
             // 
             // colMa
             // 
@@ -238,7 +242,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 476);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvNhanVien);
             this.Controls.Add(this.btThem);
             this.Controls.Add(this.btXoa);
             this.Controls.Add(this.btThoat);
@@ -250,13 +254,14 @@
             this.Controls.Add(this.tbHoTen);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmBDonVi);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbMa);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,7 +272,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbMa;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmBDonVi;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbHoTen;
@@ -279,7 +284,7 @@
         private System.Windows.Forms.Button btThoat;
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btThem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMa;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
